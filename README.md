@@ -1,2 +1,2 @@
 # Console-calculator.cpp
-In working
+Консольный калькулятор на c++
