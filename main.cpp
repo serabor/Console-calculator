@@ -49,7 +49,7 @@ int calcualate() {
          out = pow(n1, n2);
          break;
       case '%':
-         out = n1 + n2;
+         out = n1 / 100 * n2;
          break;
       default:
          cout << "Операции - " << op << " НЕ существует" << endl;
