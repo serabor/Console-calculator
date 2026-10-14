@@ -1,16 +1,22 @@
  #include <iostream>
  #include <cmath>
+ #include <iomanip>
  using namespace std;
 
     char op;
     double n1, n2, out;
     int exi = 1;
+    bool pro;
 
  void start() {
     cout << "Добро пожаловать! " << endl;
     cout << "Все операции:" << endl << "сложение - +" << endl << "вычитание - -" << endl << "умножение - *" << endl << "деление - /";
     cout << endl << "процент от числа - %" << endl << "возведение в степень - ^" << endl << "извлечение корня - возведение в 0.5 степень" << endl;
-
+    cout << "Включить pro режим y/n? ";
+    cin >> op;
+    cout << endl;
+    if(op == 'y') pro = true;
+    else pro = false;
     
  }
 
@@ -43,6 +49,10 @@ int calcualate() {
          out = n1 * n2;
          break;
       case '/':
+         if(n2 == 0){
+            cout << "Ошибка - на ноль делить нельзя!" << endl;
+            return 1;
+         }
          out = n1 / n2;
          break;
       case '^':
@@ -53,7 +63,7 @@ int calcualate() {
          break;
       default:
          cout << "Операции - " << op << " НЕ существует" << endl;
-         return 2;    
+         return 2;
                   
    }
    return 0;
@@ -74,7 +84,10 @@ int calcualate() {
       exi = 1;
       input();
       int err = calcualate();
-      if(err == 0) cout << "Ответ: " << out << endl;
+      if(err == 0){
+         if(pro) cout << "Ответ: " << fixed << setprecision(16) << out << endl;
+         else cout << "Ответ: " << setprecision(7) << out << endl;
+      }
       else {
          exitt();
          continue;
